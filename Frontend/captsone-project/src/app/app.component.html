@@ -1,5 +1,23 @@
-<div class="pb-2 mt-4 mb-2 border-bottom text-center">
+<!-- <div class="pb-2 mt-4 mb-2 border-bottom text-center">
   <h3>The Grocery Store</h3>
-</div>
+</div> -->
+<nav style="padding: 10px;" class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- <a class="navbar-brand" href="/admin-dashboard">Grocery Store</a> -->
+  <a class="navbar-brand" href="/admin-dashboard">
+    <img src="../assets/grocery_store_icon.png" width="30" height="30" alt="">
+    Grocery Store
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div style="justify-content: flex-end;" class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div *ngIf="adminAuthService.isAdminLoggedIn()" class="navbar-nav">
+      <button  (click)="logout()" class="btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>
+    </div>
+  </div>
+</nav>
 
-<router-outlet></router-outlet>
+<div style="margin-top: 20px;">
+  <router-outlet></router-outlet>
+</div>

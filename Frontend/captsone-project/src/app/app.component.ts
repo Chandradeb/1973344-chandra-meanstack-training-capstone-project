@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AdminAuthService } from './services/admin-auth.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'captsone-project';
+
+  constructor(public adminAuthService: AdminAuthService) { }
+
+  ngOnInit() {
+  }
+
+  logout() {
+    this.adminAuthService.adminLogout()
+  }
 }
