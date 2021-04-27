@@ -7,7 +7,6 @@ let employeeLogin = (req, res)=>{
     let epass = req.body.pass;
 
     EmployeeModel.findOne({email:eemail}, (err, result)=>{
-        console.log(result);
         if(err)throw err;
         if(!result){
             return res.json({success:false, msg: "Incorrect email!!"})
