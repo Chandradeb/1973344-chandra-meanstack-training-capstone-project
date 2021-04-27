@@ -1,0 +1,41 @@
+<div class="jumbotron">
+    <div class="container">
+        <div class="row row-cols-2">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Send Requests</h5>
+                    <p class="card-text">
+                        Send new requests to admin to increase product quantities
+                    </p>
+                    <button (click)="sendRequest()" class="btn btn-info">Add</button>
+                </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Update Order Status</h5>
+                    <p class="card-text">View user's orders and change the order status</p>
+                    <button (click)="updateOrderStatus()" class="btn btn-info">Update</button>
+                </div>
+            </div>
+
+
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Unlock Users</h5>
+                    <p class="card-text">View list of users whose account is locked & unlock them</p>
+                    <button (click)="unlockUsers()" class="btn btn-info">Delete</button>
+                </div>
+            </div>
+
+
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Edit Profile</h5>
+                    <p class="card-text">Edit your profile</p>
+                    <button (click)="editProfile()" class="btn btn-info">View</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

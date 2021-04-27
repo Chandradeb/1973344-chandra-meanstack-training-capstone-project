@@ -16,6 +16,11 @@ import { AddProductComponent } from './admin/add-product/add-product.component';
 import { UpdateProductComponent } from './admin/update-product/update-product.component';
 import { DeleteProductComponent } from './admin/delete-product/delete-product.component';
 import { ViewRequestsComponent } from './admin/view-requests/view-requests.component';
+import { EmployeeDashboardComponent } from './employee/employee-dashboard/employee-dashboard.component';
+import { EmployeeProfileComponent } from './employee/employee-profile/employee-profile.component';
+import { UnlockUsersComponent } from './employee/unlock-users/unlock-users.component';
+import { OrderStatusComponent } from './employee/order-status/order-status.component';
+import { SendRequestsComponent } from './employee/send-requests/send-requests.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +33,12 @@ import { ViewRequestsComponent } from './admin/view-requests/view-requests.compo
     AddProductComponent,
     UpdateProductComponent,
     DeleteProductComponent,
-    ViewRequestsComponent
+    ViewRequestsComponent,
+    EmployeeDashboardComponent,
+    EmployeeProfileComponent,
+    UnlockUsersComponent,
+    OrderStatusComponent,
+    SendRequestsComponent
 
   ],
   imports: [
