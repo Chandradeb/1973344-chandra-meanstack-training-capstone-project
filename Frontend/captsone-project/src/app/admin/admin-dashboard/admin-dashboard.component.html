@@ -37,6 +37,26 @@
                     <button (click)="viewRequests()" class="btn btn-primary">View</button>
                 </div>
             </div>
+
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Add Employee</h5>
+                    <p class="card-text">Add New Employee</p>
+                    <button (click)="addEmployee()" class="btn btn-primary">Add</button>
+                </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Delete Employee</h5>
+                    <p class="card-text">Delete Employee</p>
+                    <button (click)="deleteEmployee()" class="btn btn-primary">Delete</button>
+                </div>
+            </div>
+
+
+
+
         </div>
 
         <div *ngIf="isIndividualOp" class="ind-operation">

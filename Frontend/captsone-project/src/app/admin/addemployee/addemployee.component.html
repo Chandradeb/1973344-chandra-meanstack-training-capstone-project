@@ -1,0 +1,19 @@
+
+<div>
+    <form #employeeRef="ngForm" (ngSubmit)="signup(employeeRef.value)">
+        <label>Employee Id</label>
+        <input type="text" name="eid" ngModel><br/>
+        <label>First Name</label>
+        <input type="text" name="fname" ngModel><br/>
+        <label>Last Name</label>
+        <input type="text" name="lname" ngModel><br/>
+        <label>Email Id</label>
+        <input type="text" name="emailid" ngModel><br/>
+        <label>Password</label>
+        <input type="text" name="pass" ngModel><br/>
+        <input type="submit" value="Signup"/>
+        <input type="reset" value="reset"/>
+    </form>
+</div>
+
+

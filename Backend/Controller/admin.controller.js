@@ -1,6 +1,10 @@
-'use strict';
 
-var adminModel = require('../Model/admin.model.js')
+
+const { isValidObjectId } = require('mongoose');
+var adminModel = require('../Model/admin.model.js');
+var EmployeeModel = require('../model/employee.model.js');
+
+
 
 exports.admin_login = function(req, res) {
     // console.log('admin_controller')
@@ -61,3 +65,56 @@ exports.admin_viewRequests = function(req, res) {
     })
 }
 
+exports.Signup = (req,res)=> {
+   
+    let employee = new EmployeeModel({
+        _id:req.body.eid,
+        fname:req.body.fname,
+        lname:req.body.lname,
+        emailid:req.body.emailid,
+        password:req.body.pass
+        
+    });
+    
+    employee.save((err,result)=> {
+        if(!err){
+            res.send("Record stored successfully ")
+            //res.json({"msg":"Record stored successfully"})
+        }else {
+            res.send("Record didn't store ");
+        }
+    })
+
+}
+
+exports.deleteEmployee = (req,res)=>{
+    let eid = req.params.id;
+    console.log(eid)
+    EmployeeModel.deleteOne({_id:eid},(err,result)=> {
+        if(!err){
+                if(result.deletedCount>0){
+                
+                    res.send("Record deleted successfully") 
+                    console.log(result)
+                }
+        
+                else {
+                    res.send("Record not present");
+                    //console.log(err.message)
+                }
+            }
+    })
+}
+
+
+
+    
+/*adminModel.UserInfo.find({ "userID": req.body.userID, "password": req.body.password }).then(data => {
+    if (data.length > 0) {
+        adminModel.UserInfo.updateOne({ "_id": data[0]._id }, { $set: { Islogged: 1, active: 0 } }).then(result => {
+            if (result) {
+                resolve({ "Status": 200, "Info": "Sign In Successfull", "data": data[0]._id })
+            }
+        })*/
+
+//module.exports={signin}

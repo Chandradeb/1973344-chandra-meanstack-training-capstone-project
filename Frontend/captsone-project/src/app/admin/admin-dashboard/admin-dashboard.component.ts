@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AdminAuthService } from 'src/app/services/admin-auth.service';
 
 @Component({
@@ -13,8 +14,9 @@ export class AdminDashboardComponent implements OnInit {
   isUpdateProduct: boolean = false;
   isDeleteProduct: boolean = false;
   isViewRequests: boolean = false;
+  isAddEmployee:boolean = false;
 
-  constructor(private adminAuthService: AdminAuthService) { }
+  constructor(private adminAuthService: AdminAuthService, public router:Router) { }
 
   ngOnInit(): void {
 
@@ -46,6 +48,13 @@ export class AdminDashboardComponent implements OnInit {
     this.deactivateAllOps();
     this.isViewRequests = true;
   }
+  addEmployee(){
+      this.router.navigate(["/addemployee"])
+  }
+
+  deleteEmployee(){
+    this.router.navigate(["/deleteemployee"])
+  }
 
   deactivateAllOps() {
     this.isIndividualOp = true;
@@ -53,5 +62,6 @@ export class AdminDashboardComponent implements OnInit {
     this.isUpdateProduct = false;
     this.isDeleteProduct = false;
     this.isViewRequests = false;
+    this.isAddEmployee = false;
   }
 }

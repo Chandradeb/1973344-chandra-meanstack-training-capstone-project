@@ -1,0 +1,23 @@
+<div>
+    <h2>User Signup</h2>
+    <form #userRef="ngForm" (ngSubmit)="signup(userRef.value)">
+        <label>User Id</label>
+        <input type="text" name="uid" ngModel><br/>
+        <label>First Name</label>
+        <input type="text" name="fname" ngModel><br/>
+        <label>Last Name</label>
+        <input type="text" name="lname" ngModel><br/>
+        <label>Date of Birth</label>
+        <input type="date" name="dob" ngModel><br/>
+        <label>Address</label>
+        <input type="text" name="address" ngModel><br/>
+        <label>Funds</label>
+        <input type="number" name="fund" ngModel><br/>
+        <label>Email Id</label>
+        <input type="text" name="emailid" ngModel><br/>
+        <label>Password</label>
+        <input type="text" name="pass" ngModel><br/>
+        <input type="submit" value="Signup"/>
+        <input type="reset" value="reset"/>
+    </form>
+</div>
