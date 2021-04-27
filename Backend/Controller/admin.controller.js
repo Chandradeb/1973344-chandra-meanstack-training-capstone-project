@@ -69,7 +69,7 @@ exports.Signup = (req,res)=> {
         _id:req.body.eid,
         fname:req.body.fname,
         lname:req.body.lname,
-        emailid:req.body.emailid,
+        email:req.body.emailid,
         password:req.body.pass
         
     });
