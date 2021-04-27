@@ -1,1 +1,19 @@
-<p>employee-main works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+            <form class="px-4 py-3" [formGroup]="signInRef" (ngSubmit)="checkEmployee()">
+            <div class="mb-3">
+                <label for="emailLogin" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="emailSingIn" placeholder="email@example.com" formControlName = "email" required>
+            </div>
+            <div class="mb-3">
+                <label for="passLogin" class="form-label">Password</label>
+                <input type="password" class="form-control" id="passSignIn" placeholder="Password" formControlName = "pass" required>
+            </div>
+            <button type="submit" class="btn btn-link" [disabled]="signInRef.invalid">Sign In</button>
+            <button type="reset" class="btn btn-secondary">Clear</button>
+            </form>
+        </div>
+    </div>
+</div>
+  

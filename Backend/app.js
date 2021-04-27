@@ -21,15 +21,17 @@ const mongooseDbOption = {       // to avoid warning
 //ready to connct
 mongoose.connect(url, mongooseDbOption);
 //connect the database
-mongoose.connection
+mongoose.connection;
 
 
 //link to router module
 var User = require("./Router/user.router.js");
 var Admin = require("./Router/admin.router.js");
+var Employee = require("./Router/employee.router.js");
 
 //Middelware
 app.use("/user", User);
 app.use("/admin", Admin);
+app.use("/employee", Employee);
 
 app.listen(9090, () => console.log("Server running on port 9090"));

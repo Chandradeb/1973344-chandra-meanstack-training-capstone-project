@@ -21,7 +21,11 @@ import { DeleteemployeeComponent } from './admin/deleteemployee/deleteemployee.c
 import { SigninComponent } from './user/signin/signin.component';
 import { SignupComponent } from './user/signup/signup.component';
 import { UserdashboardComponent } from './user/userdashboard/userdashboard.component';
-
+import { EmployeeDashboardComponent } from './employee/employee-dashboard/employee-dashboard.component';
+import { EmployeeProfileComponent } from './employee/employee-profile/employee-profile.component';
+import { UnlockUsersComponent } from './employee/unlock-users/unlock-users.component';
+import { OrderStatusComponent } from './employee/order-status/order-status.component';
+import { SendRequestsComponent } from './employee/send-requests/send-requests.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +44,11 @@ import { UserdashboardComponent } from './user/userdashboard/userdashboard.compo
     SigninComponent,
     SignupComponent,
     UserdashboardComponent,
-   
+    EmployeeDashboardComponent,
+    EmployeeProfileComponent,
+    UnlockUsersComponent,
+    OrderStatusComponent,
+    SendRequestsComponent
 
   ],
   imports: [
