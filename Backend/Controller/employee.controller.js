@@ -1,4 +1,5 @@
 const EmployeeModel = require("../Model/employee.model.js")
+const ObjectId = require('mongodb').ObjectId;
 
 
 let employeeLogin = (req, res)=>{
@@ -14,6 +15,7 @@ let employeeLogin = (req, res)=>{
                 res.json({
                     success:true,
                     employee: {
+                        _id:new ObjectId(result._id),
                         email:result.email,
                         fname:result.fname,
                         lname:result.lname
