@@ -7,7 +7,8 @@ let EmployeeSchema = mongoose.Schema({
     email:String,
     pass:String,
     fname:String,
-    lname:String
+    lname:String,
+    password:String
 })
 
 //creating the table model

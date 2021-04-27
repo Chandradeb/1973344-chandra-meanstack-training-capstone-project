@@ -1,8 +1,6 @@
-
-
 const { isValidObjectId } = require('mongoose');
 var adminModel = require('../Model/admin.model.js');
-var EmployeeModel = require('../model/employee.model.js');
+var EmployeeModel = require('../Model/employee.model.js');
 
 
 
@@ -97,24 +95,9 @@ exports.deleteEmployee = (req,res)=>{
                     res.send("Record deleted successfully") 
                     console.log(result)
                 }
-        
                 else {
                     res.send("Record not present");
-                    //console.log(err.message)
                 }
             }
     })
 }
-
-
-
-    
-/*adminModel.UserInfo.find({ "userID": req.body.userID, "password": req.body.password }).then(data => {
-    if (data.length > 0) {
-        adminModel.UserInfo.updateOne({ "_id": data[0]._id }, { $set: { Islogged: 1, active: 0 } }).then(result => {
-            if (result) {
-                resolve({ "Status": 200, "Info": "Sign In Successfull", "data": data[0]._id })
-            }
-        })*/
-
-//module.exports={signin}
