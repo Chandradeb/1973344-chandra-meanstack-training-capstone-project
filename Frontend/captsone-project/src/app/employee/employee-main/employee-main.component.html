@@ -4,19 +4,13 @@
             <form class="px-4 py-3" [formGroup]="signInRef" (ngSubmit)="checkEmployee()">
             <div class="mb-3">
                 <label for="emailLogin" class="form-label">Email address</label>
-                <input type="email" class="form-control is-invalid" id="emailSingIn" placeholder="email@example.com" formControlName = "email" required>
-                <div *ngIf="signInRef.get('email')?.errors?.required" id="emailSingInFeed" class="invalid-feedback">
-                    Please provide an email.
-                </div>
+                <input type="email" class="form-control" id="emailSingIn" placeholder="email@example.com" formControlName = "email" required>
             </div>
             <div class="mb-3">
                 <label for="passLogin" class="form-label">Password</label>
-                <input type="password" class="form-control is-invalid" id="passSignIn" placeholder="Password" formControlName = "pass" required>
-                <div *ngIf="signInRef.get('pass')?.errors?.required" id="passlSingInFeed" class="invalid-feedback">
-                    Please provide an password.
-                </div>
+                <input type="password" class="form-control" id="passSignIn" placeholder="Password" formControlName = "pass" required>
             </div>
-            <button type="submit" class="btn btn-primary" [disabled]="signInRef.invalid">Sign In</button>
+            <button type="submit" class="btn btn-link" [disabled]="signInRef.invalid">Sign In</button>
             <button type="reset" class="btn btn-secondary">Clear</button>
             </form>
         </div>
