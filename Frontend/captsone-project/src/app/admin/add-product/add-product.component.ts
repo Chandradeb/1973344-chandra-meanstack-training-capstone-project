@@ -60,14 +60,14 @@ export class AddProductComponent implements OnInit {
       console.log(data);
       if (data.message == 'Success') {
         this.loading = false;
-        this.toastr.success('Successfully added a product', 'Success', {
+        this.toastr.success(data.text, 'Success', {
           timeOut: 3000,
         });
         this.dashboardChange.emit("cancel");
       } else {
         console.log('Something is wrong');
         this.loading = false;
-        this.toastr.error('Something went wrong', 'Error', {
+        this.toastr.error(data.text, 'Error', {
           timeOut: 3000,
         });
       }
