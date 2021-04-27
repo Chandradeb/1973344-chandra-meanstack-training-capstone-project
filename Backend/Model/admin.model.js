@@ -1,5 +1,6 @@
 var admin = function (admin) { };
 const { v4: uuidv4 } = require('uuid');
+const { db } = require('./employee.model');
 
 const mongooseDbOption = {       // to avoid warning
     useNewUrlParser: true,
@@ -43,22 +44,26 @@ admin.addProduct = function addProduct(body, res) {
     
     let mongoClient = require("mongodb").MongoClient;
     let url = "mongodb://localhost:27017"
-    var productObj = { product_id: uuidv4(), name: name, price: price, quantity: quantity };
-    console.log(productObj)
-
+    var productObj = { name: name, price: price, quantity: quantity };
+    let nameObj = { name:body.name};
     mongoClient.connect(url, mongooseDbOption, (err1, client) => {
         if (!err1) {
             let db = client.db("grocery_store");
-            db.collection("Products").insertOne(productObj, (err2, result) => {
-                if (!err2) {
-                    console.log(result.insertedCount);
-                    res(null, { message: 'Success', text: 'Succesfully added a product' })
-                } else {
-                    console.log(err2.message);
-                    res(null, { message: 'Error', text: 'Error' })
+            db.collection("Products").findOne(nameObj,(error,data) => {
+                if(data){
+                    res(null, { message: 'Error', text: 'Product already exist'});
+                    client.close();
+                }else{     
+                    db.collection("Products").insertOne(productObj, (err2, result) => {
+                        if (!err2) {
+                            res(null, { message: 'Success', text: 'Succesfully added a product' })
+                        } else {
+                            res(null, { message: 'Error', text: 'Somnething went wrong' })
+                        }
+                        client.close();
+                    });
                 }
-                client.close();
-            });
+            })
         }
     })
 }
@@ -82,7 +87,6 @@ admin.updateProduct = function updateProduct(body, res) {
                 if (!err2) {
                     res(null, { message: 'Success', text: 'Succesfully updated a product' })
                 } else {
-                    console.log(err2.message);
                     res(null, { message: 'Error', text: 'Error' })
                 }
                 client.close();
@@ -92,19 +96,16 @@ admin.updateProduct = function updateProduct(body, res) {
 }
 
 admin.deleteProduct = function deleteProduct(productName, res) {
-    console.log('productId', productName)
-    
     let mongoClient = require("mongodb").MongoClient;
     let url = "mongodb://localhost:27017"
 
     mongoClient.connect(url, mongooseDbOption, (err1, client) => {
         if (!err1) {
             let db = client.db("grocery_store");
-            db.collection("Products").deleteOne({ name: productName }, (err2, result) => {
+            db.collection("Products").deleteOne({ name: productName}, (err2, result) => {
                 if (!err2) {
                     res(null, { message: 'Success', text: 'Succesfully updated a product' })
                 } else {
-                    console.log(err2.message);
                     res(null, { message: 'Error', text: 'Error' })
                 }
                 client.close();
@@ -126,7 +127,6 @@ admin.getEmployeeRequests = function getEmployeeRequests(req, res) {
                 if (!err2) {
                     res(null, result)             
                 } else {
-                    console.log(err2.message);
                     res(null, { message: 'Error', text: 'Error' })             
                 }
                 client.close();
