@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-userdashboard',
@@ -7,32 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserdashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit(): void {
   }
-  SelectItems(){
+
+  StartShopping(){
 
   }
-  DeleteItems(){
 
-  }
-  viewItems(){
-
-  }
-  CheckOut(){
-
-  }
   OrderStatus(){
-
+    this.router.navigate(['user-order-status'])
   }
+
   EditProfile(){
-
+    this.router.navigate(['edit-profile'])
   }
+
   Funds(){
-
-  }
-  Logout(){
-    
+    this.router.navigate(['user-funds'])
   }
 }

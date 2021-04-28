@@ -20,6 +20,9 @@ import { SendRequestsComponent } from './employee/send-requests/send-requests.co
 import { UnlockUsersComponent } from './employee/unlock-users/unlock-users.component';
 import { UserAuthGuard } from './guards/user-auth.guard';
 import { UserAuth2Guard } from './guards/user-auth2.guard';
+import { UserOrderStatusComponent } from './user/user-order-status/user-order-status.component';
+import { EditProfileComponent } from './user/edit-profile/edit-profile.component';
+import { UserFundsComponent } from './user/user-funds/user-funds.component';
 
 const routes: Routes = [
   { path: "main-page", component: MainPageComponent, canActivate: [EmployeeAuth2Guard, UserAuth2Guard]},
@@ -37,6 +40,9 @@ const routes: Routes = [
   { path: "order-status", component: OrderStatusComponent, canActivate: [EmployeeAuthGuard]},
   { path: "send-requests", component: SendRequestsComponent, canActivate: [EmployeeAuthGuard]},
   { path: "unlock-users", component: UnlockUsersComponent, canActivate: [EmployeeAuthGuard]},
+  { path: "user-order-status", component: UserOrderStatusComponent},
+  { path: "edit-profile", component: EditProfileComponent},
+  { path: "user-funds", component: UserFundsComponent},
   { path: "", redirectTo: "\main-page", pathMatch: "full" }
 ];
 

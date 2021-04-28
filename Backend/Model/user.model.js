@@ -11,7 +11,10 @@ let UserSchema = new Schema({
     fund:Number,
     addr:String,
     emailid:String,
-    password:String
+    password:String,
+    loginAttempt:Number,
+    orders:Array(),
+    phoneNum:String
 })
 
 

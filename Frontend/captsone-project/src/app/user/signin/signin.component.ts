@@ -16,7 +16,7 @@ export class SigninComponent implements OnInit {
   constructor(
     public userService:UserService, 
     public router:Router, 
-    private toastr: ToastrService
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit(): void {
@@ -24,13 +24,15 @@ export class SigninComponent implements OnInit {
   signin(userRef:any){
     this.userService.signin(userRef).subscribe(result=>{
       this.signInData = result;
-      console.log(this.signInData.success)
       if(this.signInData.success){
         this.toastr.success('Successfully Signed In', 'Success', {
           timeOut: 2000,
         });
       //token for user login
       sessionStorage.setItem('userSignedIn', 'true');
+      
+      //Update username in user.service
+      this.userService.usrName=this.signInData.user.userName;
 
       //user information for using to edit profile
       sessionStorage.setItem('userDetails',JSON.stringify(this.signInData.user))

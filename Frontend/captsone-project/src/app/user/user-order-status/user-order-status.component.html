@@ -1,0 +1,26 @@
+<div>
+    <table class="table table-bordered table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Order Id</th>
+                <th scope="col">Status</th>
+                <th scope="col">Total Price</th>
+                <th scope="col">Date Of Order</th>
+                <th scope="col">Items</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let orders of orderStatus.order">
+                <td>{{orders._id}}</td>
+                <td>{{orders.status}}</td>
+                <td>{{orders.total}}</td>
+                <td>{{orders.date | date: "MM-dd-y"}}</td>
+                <td>
+                    <div *ngFor = "let items of orders.itemsNames">
+                        <div>{{items}}</div>
+                    </div>  
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

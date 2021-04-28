@@ -1,0 +1,92 @@
+<div>
+    <div class="card">
+        <h5 class="card-header">First Name</h5>
+        <div class="card-body">
+            <p class="card-text">{{userDetails.fname}}</p>
+            <button type="button" *ngIf="!fnameFlag" class="btn btn-info" (click) = "fnameEdit()">
+                <img src="../assets/edit_icon.jpg" width="20" height="20" alt=""> Edit
+            </button>
+            <form *ngIf="fnameFlag" class="px-4 py-3" [formGroup]="changefnameRef" (ngSubmit)="fnameEdit()">
+                <div class="mb-3">
+                    <input type="text" class="form-control" formControlName = "fname" required>
+                </div>
+                <button type="submit" class="btn btn-link" [disabled]="changefnameRef.invalid">Save</button>
+            </form>
+        </div>
+    </div>
+    <div class="card">
+        <h5 class="card-header">Last Name</h5>
+        <div class="card-body">
+            <p class="card-text">{{userDetails.lname}}</p>
+            <button type="button" *ngIf="!lnameFlag" class="btn btn-info" (click) = "lnameEdit()">
+                <img src="../assets/edit_icon.jpg" width="20" height="20" alt=""> Edit
+            </button>
+            <form *ngIf="lnameFlag" class="px-4 py-3" [formGroup]="changelnameRef" (ngSubmit)="lnameEdit()">
+                <div class="mb-3">
+                    <input type="text" class="form-control" formControlName = "lname" required>
+                </div>
+                <button type="submit" class="btn btn-link" [disabled]="changelnameRef.invalid">Save</button>
+            </form>
+        </div>
+    </div>
+    <div class="card">
+        <h5 class="card-header">Email</h5>
+        <div class="card-body">
+            <p class="card-text">{{userDetails.emailid}}</p>
+            <button type="button" *ngIf="!emailFlag" class="btn btn-info" (click) = "emailEdit()">
+                <img src="../assets/edit_icon.jpg" width="20" height="20" alt=""> Edit
+            </button>
+            <form *ngIf="emailFlag" class="px-4 py-3" [formGroup]="changeemailRef" (ngSubmit)="emailEdit()">
+                <div class="mb-3">
+                    <input type="email" class="form-control" formControlName = "email" required>
+                </div>
+                <button type="submit" class="btn btn-link" [disabled]="changeemailRef.invalid">Save</button>
+            </form>
+        </div>
+    </div>
+    <div class="card">
+        <h5 class="card-header">Phone Number</h5>
+        <div class="card-body">
+            <p class="card-text">{{userDetails.phoneNum}}</p>
+            <button type="button" *ngIf="!phoneNumFlag" class="btn btn-info" (click) = "phoneNumEdit()">
+                <img src="../assets/edit_icon.jpg" width="20" height="20" alt=""> Edit
+            </button>
+            <form *ngIf="phoneNumFlag" class="px-4 py-3" [formGroup]="changephoneNumRef" (ngSubmit)="phoneNumEdit()">
+                <div class="mb-3">
+                    <input type="tel" class="form-control" formControlName = "phoneNum" required>
+                </div>
+                <button type="submit" class="btn btn-link" [disabled]="changephoneNumRef.invalid">Save</button>
+            </form>
+        </div>
+    <div>
+    <div class="card">
+        <h5 class="card-header">Address</h5>
+        <div class="card-body">
+            <p class="card-text">{{userDetails.addr}}</p>
+            <button type="button" *ngIf="!addrFlag" class="btn btn-info" (click) = "addrEdit()">
+                <img src="../assets/edit_icon.jpg" width="20" height="20" alt=""> Edit
+            </button>
+            <form *ngIf="addrFlag" class="px-4 py-3" [formGroup]="changeaddrRef" (ngSubmit)="addrEdit()">
+                <div class="mb-3">
+                    <input type="text" class="form-control" formControlName = "addr" required>
+                </div>
+                <button type="submit" class="btn btn-link" [disabled]="changeaddrRef.invalid">Save</button>
+            </form>
+        </div>
+    <div>
+    <div class="card">
+        <h5 class="card-header">Date of birth</h5>
+        <div class="card-body">
+            <p class="card-text">{{userDetails.dob | date: "MM-dd-y"}}</p>
+            <button type="button" *ngIf="!dobFlag" class="btn btn-info" (click) = "dobEdit()">
+                <img src="../assets/edit_icon.jpg" width="20" height="20" alt=""> Edit
+            </button>
+            <form *ngIf="dobFlag" class="px-4 py-3" [formGroup]="changedobRef" (ngSubmit)="dobEdit()">
+                <div class="mb-3">
+                    <input type="date" class="form-control" formControlName = "dob" required>
+                </div>
+                <button type="submit" class="btn btn-link" [disabled]="changedobRef.invalid">Save</button>
+            </form>
+        </div>
+    <div>
+</div>

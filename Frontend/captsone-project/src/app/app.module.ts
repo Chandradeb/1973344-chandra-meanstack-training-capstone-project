@@ -26,6 +26,9 @@ import { EmployeeProfileComponent } from './employee/employee-profile/employee-p
 import { UnlockUsersComponent } from './employee/unlock-users/unlock-users.component';
 import { OrderStatusComponent } from './employee/order-status/order-status.component';
 import { SendRequestsComponent } from './employee/send-requests/send-requests.component';
+import { UserOrderStatusComponent } from './user/user-order-status/user-order-status.component';
+import { EditProfileComponent } from './user/edit-profile/edit-profile.component';
+import { UserFundsComponent } from './user/user-funds/user-funds.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,10 @@ import { SendRequestsComponent } from './employee/send-requests/send-requests.co
     EmployeeProfileComponent,
     UnlockUsersComponent,
     OrderStatusComponent,
-    SendRequestsComponent
+    SendRequestsComponent,
+    UserOrderStatusComponent,
+    EditProfileComponent,
+    UserFundsComponent
 
   ],
   imports: [
@@ -64,7 +70,7 @@ import { SendRequestsComponent } from './employee/send-requests/send-requests.co
         closeButton: true,  
           
       } 
-    ), // ToastrModule added
+    ),
 
   ],
   providers: [],
