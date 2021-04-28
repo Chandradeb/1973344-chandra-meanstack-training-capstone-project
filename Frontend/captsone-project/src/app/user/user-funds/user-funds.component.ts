@@ -36,7 +36,7 @@ export class UserFundsComponent implements OnInit {
     {
       this.fundFlag = true;
     }else{
-      let total = Number(this.changefundRef.value.fund)+20000;
+      let total = Number(this.changefundRef.value.fund)+Number(this.userDetails.fund);
       this.changefundRef.value.fund = total;
       console.log(this.changefundRef.value.fund)
       this.fundFlag = false;
