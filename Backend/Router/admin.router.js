@@ -7,5 +7,7 @@ router.post('/addProduct', admin_controller.admin_addProduct);
 router.post('/updateProduct', admin_controller.admin_updateProduct);
 router.delete('/deleteProduct/:productName', admin_controller.admin_deleteProduct);
 router.get('/viewRequests', admin_controller.admin_viewRequests);
+router.post('/Signup',admin_controller.Signup);
+router.delete('/deleteEmployee/:email',admin_controller.deleteEmployee);
 
 module.exports = router;

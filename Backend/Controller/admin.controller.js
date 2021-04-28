@@ -1,6 +1,8 @@
-'use strict';
+const { isValidObjectId } = require('mongoose');
+var adminModel = require('../Model/admin.model.js');
+var EmployeeModel = require('../Model/employee.model.js');
 
-var adminModel = require('../Model/admin.model.js')
+
 
 exports.admin_login = function(req, res) {
     // console.log('admin_controller')
@@ -61,3 +63,41 @@ exports.admin_viewRequests = function(req, res) {
     })
 }
 
+exports.Signup = (req,res)=> {
+    let eemail = req.body.emailid;
+    EmployeeModel.findOne({email:eemail}, (err,result)=>{
+        if(err)throw err;
+        if(result){
+            return res.json({success:false, msg:"Email already exist"})
+        }else{
+            let employee = new EmployeeModel({
+                fname:req.body.fname,
+                lname:req.body.lname,
+                email:req.body.emailid,
+                password:req.body.pass   
+            })
+            employee.save((err,result)=> {
+                if(!err){
+                    return res.json({success:true, msg:"Employee registered"});
+                }else {
+                    return res.json({success:false, msg:"Something went wrong"});
+                }
+            })
+        }
+    })
+
+}
+
+exports.deleteEmployee = (req,res)=>{
+    let eemail = req.params.email;
+    EmployeeModel.deleteOne({email:eemail},(err,result)=> {
+        if(!err){
+            if(result.deletedCount>0){
+                res.send("true") 
+            }
+            else {
+                res.send("false");
+            }
+        }
+    })
+}

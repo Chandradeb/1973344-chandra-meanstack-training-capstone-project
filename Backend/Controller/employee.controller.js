@@ -11,11 +11,11 @@ let employeeLogin = (req, res)=>{
         if(!result){
             return res.json({success:false, msg: "Incorrect email!!"})
         }else{
-            if(result.pass == epass){
+            if(result.password == epass){
                 res.json({
                     success:true,
                     employee: {
-                        _id:new ObjectId(result._id),
+                        _id:result._id,
                         email:result.email,
                         fname:result.fname,
                         lname:result.lname

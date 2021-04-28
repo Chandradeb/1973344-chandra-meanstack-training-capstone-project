@@ -7,7 +7,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { EmployeeMainComponent } from './employee/employee-main/employee-main.component';
 import { AdminMainComponent } from './admin/admin-main/admin-main.component';
 import { UserMainComponent } from './user/user-main/user-main.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
@@ -16,11 +16,19 @@ import { AddProductComponent } from './admin/add-product/add-product.component';
 import { UpdateProductComponent } from './admin/update-product/update-product.component';
 import { DeleteProductComponent } from './admin/delete-product/delete-product.component';
 import { ViewRequestsComponent } from './admin/view-requests/view-requests.component';
+import { AddemployeeComponent } from './admin/addemployee/addemployee.component';
+import { DeleteemployeeComponent } from './admin/deleteemployee/deleteemployee.component';
+import { SigninComponent } from './user/signin/signin.component';
+import { SignupComponent } from './user/signup/signup.component';
+import { UserdashboardComponent } from './user/userdashboard/userdashboard.component';
 import { EmployeeDashboardComponent } from './employee/employee-dashboard/employee-dashboard.component';
 import { EmployeeProfileComponent } from './employee/employee-profile/employee-profile.component';
 import { UnlockUsersComponent } from './employee/unlock-users/unlock-users.component';
 import { OrderStatusComponent } from './employee/order-status/order-status.component';
 import { SendRequestsComponent } from './employee/send-requests/send-requests.component';
+import { UserOrderStatusComponent } from './user/user-order-status/user-order-status.component';
+import { EditProfileComponent } from './user/edit-profile/edit-profile.component';
+import { UserFundsComponent } from './user/user-funds/user-funds.component';
 
 @NgModule({
   declarations: [
@@ -34,11 +42,19 @@ import { SendRequestsComponent } from './employee/send-requests/send-requests.co
     UpdateProductComponent,
     DeleteProductComponent,
     ViewRequestsComponent,
+    AddemployeeComponent,
+    DeleteemployeeComponent,
+    SigninComponent,
+    SignupComponent,
+    UserdashboardComponent,
     EmployeeDashboardComponent,
     EmployeeProfileComponent,
     UnlockUsersComponent,
     OrderStatusComponent,
-    SendRequestsComponent
+    SendRequestsComponent,
+    UserOrderStatusComponent,
+    EditProfileComponent,
+    UserFundsComponent
 
   ],
   imports: [
@@ -46,8 +62,15 @@ import { SendRequestsComponent } from './employee/send-requests/send-requests.co
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(), // ToastrModule added
+    ToastrModule.forRoot(
+      {  
+        positionClass:'top-left',  
+        closeButton: true,  
+          
+      } 
+    ),
 
   ],
   providers: [],
