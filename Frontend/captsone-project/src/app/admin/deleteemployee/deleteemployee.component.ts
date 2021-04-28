@@ -25,15 +25,15 @@ export class DeleteemployeeComponent implements OnInit {
       });
     }else{
       this.adminService.deleteEmployee(email).subscribe(result=>{
-        console.log(result)
-        if(this.deleteData.success){
-          this.toastr.success(this.deleteData.msg, 'Success', {
+        if(result == "true"){
+          this.toastr.success("Record deleted successfully", 'Success', {
             timeOut: 2000,
           });
+          this.router.navigate(['admin-dashboard']);
         }else{
-          this.toastr.error(this.deleteData.msg, 'Error', {
+          this.toastr.error("Record does not exist", 'Error', {
             timeOut: 2000,
-          });  
+          });
         }
       })
     }

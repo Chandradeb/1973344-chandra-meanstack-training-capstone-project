@@ -92,12 +92,12 @@ exports.deleteEmployee = (req,res)=>{
     let eemail = req.params.email;
     EmployeeModel.deleteOne({email:eemail},(err,result)=> {
         if(!err){
-                if(result.deletedCount>0){
-                    res.send("Record deleted successfully") 
-                }
-                else {
-                    res.send("Record not present");
-                }
+            if(result.deletedCount>0){
+                res.send("true") 
             }
+            else {
+                res.send("false");
+            }
+        }
     })
 }

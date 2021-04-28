@@ -38,7 +38,7 @@ export class AdminService {
   }
 
   deleteEmployee(email:any){
-    return this.http.delete("http://localhost:9090/admin/deleteEmployee/"+email);
+    return this.http.delete("http://localhost:9090/admin/deleteEmployee/"+email,{responseType:'text'});
   }
  
 

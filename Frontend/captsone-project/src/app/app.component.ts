@@ -1,6 +1,7 @@
 import { EmployeeAuthService } from './services/employee-auth.service';
 import { Component } from '@angular/core';
 import { AdminAuthService } from './services/admin-auth.service';
+import { UserAuthService } from './services/user-auth.service';
 
 @Component({
   selector: 'app-root',
@@ -13,8 +14,8 @@ export class AppComponent {
 
   constructor(
     public adminAuthService: AdminAuthService, 
-    public employeeAuthService:EmployeeAuthService
-    
+    public employeeAuthService:EmployeeAuthService,
+    public userAuthService:UserAuthService
   ) { }
 
   ngOnInit() {
@@ -25,6 +26,8 @@ export class AppComponent {
       this.adminAuthService.adminLogout();
     }else if(this.employeeAuthService.isEmployeeLoggedIn()){
       this.employeeAuthService.employeeLogOut();
+    }else if(this.userAuthService.isUserLoggedIn()){
+      this.userAuthService.userLogOut();
     }
   }
 }

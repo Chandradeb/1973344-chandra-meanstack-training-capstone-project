@@ -18,18 +18,20 @@ import { EmployeeProfileComponent } from './employee/employee-profile/employee-p
 import { OrderStatusComponent } from './employee/order-status/order-status.component';
 import { SendRequestsComponent } from './employee/send-requests/send-requests.component';
 import { UnlockUsersComponent } from './employee/unlock-users/unlock-users.component';
+import { UserAuthGuard } from './guards/user-auth.guard';
+import { UserAuth2Guard } from './guards/user-auth2.guard';
 
 const routes: Routes = [
-  { path: "main-page", component: MainPageComponent, canActivate: [EmployeeAuth2Guard]},
-  { path: "user-main", component: UserMainComponent },
+  { path: "main-page", component: MainPageComponent, canActivate: [EmployeeAuth2Guard, UserAuth2Guard]},
+  { path: "user-main", component: UserMainComponent, canActivate: [UserAuth2Guard]},
   { path: "employee-main", component: EmployeeMainComponent, canActivate: [EmployeeAuth2Guard]},
   { path: "admin-main", component: AdminMainComponent },
   { path: "admin-dashboard", component: AdminDashboardComponent, canActivate: [AdminAuthGuard] },
   { path: "addemployee", component:AddemployeeComponent},
   { path: "deleteemployee", component:DeleteemployeeComponent},
   { path: "signup", component:SignupComponent},
-  { path: "signin", component:SigninComponent},
-  { path: "userdashboard", component:UserdashboardComponent},
+  { path: "signin", component:SigninComponent, canActivate: [UserAuth2Guard]},
+  { path: "userdashboard", component:UserdashboardComponent, canActivate: [UserAuthGuard]},
   { path: "employee-dashboard", component: EmployeeDashboardComponent, canActivate: [EmployeeAuthGuard]},
   { path: "employee-profile", component: EmployeeProfileComponent, canActivate: [EmployeeAuthGuard]},
   { path: "order-status", component: OrderStatusComponent, canActivate: [EmployeeAuthGuard]},
