@@ -68,7 +68,7 @@ export class UpdateProductComponent implements OnInit {
       } else {
         console.log('Something is wrong');
         this.loading = false;
-        this.toastr.error('Something went wrong', 'Error', {
+        this.toastr.error(data.text, 'Error', {
           timeOut: 3000,
         });
       }

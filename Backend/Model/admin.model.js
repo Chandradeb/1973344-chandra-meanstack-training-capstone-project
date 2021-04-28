@@ -41,19 +41,19 @@ admin.addProduct = function addProduct(body, res) {
     var name = body.name;
     var price = body.price;
     var quantity = body.quantity;
-    
+
     let mongoClient = require("mongodb").MongoClient;
     let url = "mongodb://localhost:27017"
     var productObj = { name: name, price: price, quantity: quantity };
-    let nameObj = { name:body.name};
+    let nameObj = { name: body.name };
     mongoClient.connect(url, mongooseDbOption, (err1, client) => {
         if (!err1) {
             let db = client.db("grocery_store");
-            db.collection("Products").findOne(nameObj,(error,data) => {
-                if(data){
-                    res(null, { message: 'Error', text: 'Product already exist'});
+            db.collection("Products").findOne(nameObj, (error, data) => {
+                if (data) {
+                    res(null, { message: 'Error', text: 'Product already exist' });
                     client.close();
-                }else{     
+                } else {
                     db.collection("Products").insertOne(productObj, (err2, result) => {
                         if (!err2) {
                             res(null, { message: 'Success', text: 'Succesfully added a product' })
@@ -70,11 +70,11 @@ admin.addProduct = function addProduct(body, res) {
 
 
 admin.updateProduct = function updateProduct(body, res) {
-    // console.log('body', body)
+    console.log('body', body)
     var name = body.name;
     var price = body.price;
     var quantity = body.quantity;
-    
+
     let mongoClient = require("mongodb").MongoClient;
     let url = "mongodb://localhost:27017"
 
@@ -82,18 +82,35 @@ admin.updateProduct = function updateProduct(body, res) {
         if (!err1) {
             let db = client.db("grocery_store");
             var myquery = { name: name };
-            var newvalues = { $set: {  price: price, quantity: quantity } };
-            db.collection("Products").updateOne(myquery, newvalues,(err2, result) => {
-                if (!err2) {
-                    res(null, { message: 'Success', text: 'Succesfully updated a product' })
-                } else {
+            var newvalues = { $set: { price: price, quantity: quantity } };
+            db.collection("Products").find({ name: name }).toArray(function (err, result) {
+                if (err) {
                     res(null, { message: 'Error', text: 'Error' })
+                    client.close();
+                } else {
+                    if (result.length > 0) {
+                        console.log('result length', result.length);
+                        db.collection("Products").updateOne(myquery, newvalues, (err2, uResult) => {
+                            if (!err2) {
+                                // console.log(uResult.message)
+                                res(null, { message: 'Success', text: 'Succesfully updated a product' })
+                            } else {
+                                res(null, { message: 'Error', text: 'Error while updating the product' })
+                            }
+                            client.close();
+                        });
+                    } else {
+                        res(null, { message: 'Error', text: 'No product found with this name' })
+                        client.close();
+                    }
                 }
-                client.close();
+
             });
         }
     })
 }
+
+
 
 admin.deleteProduct = function deleteProduct(productName, res) {
     let mongoClient = require("mongodb").MongoClient;
@@ -102,13 +119,27 @@ admin.deleteProduct = function deleteProduct(productName, res) {
     mongoClient.connect(url, mongooseDbOption, (err1, client) => {
         if (!err1) {
             let db = client.db("grocery_store");
-            db.collection("Products").deleteOne({ name: productName}, (err2, result) => {
-                if (!err2) {
-                    res(null, { message: 'Success', text: 'Succesfully updated a product' })
+
+            db.collection("Products").find({ name: productName }).toArray(function (err, result) {
+                if (err) {
+                    res(null, { message: 'Error', text: 'Error' });
+                    client.close();
                 } else {
-                    res(null, { message: 'Error', text: 'Error' })
+                    if (result.length > 0) {
+                        db.collection("Products").deleteOne({ name: productName }, (err2, result) => {
+                            if (!err2) {
+                                res(null, { message: 'Success', text: 'Succesfully deleted a product' })
+                            } else {
+                                res(null, { message: 'Error', text: 'Error while deleting the product' })
+                            }
+                            client.close();
+                        });
+                    } else {
+                        res(null, { message: 'Error', text: 'No product found with this name' })
+                        client.close();
+                    }
                 }
-                client.close();
+                
             });
         }
     })
@@ -125,9 +156,9 @@ admin.getEmployeeRequests = function getEmployeeRequests(req, res) {
             let db = client.db("grocery_store");
             db.collection("EmployeeRequests").find({}).toArray(function (err2, result) {
                 if (!err2) {
-                    res(null, result)             
+                    res(null, result)
                 } else {
-                    res(null, { message: 'Error', text: 'Error' })             
+                    res(null, { message: 'Error', text: 'Error' })
                 }
                 client.close();
             });
