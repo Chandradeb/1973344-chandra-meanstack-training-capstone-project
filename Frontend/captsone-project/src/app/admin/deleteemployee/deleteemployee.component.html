@@ -1,7 +1,11 @@
-<div>
-    Id :<input type="text" #idRef/><br/>
-    <input type="button" value="Delete By Id"
-    (click)="deleteEmployees(idRef.value)"/><br/>
-    {{deleteMsg}}
-    
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+            <label>Email</label> 
+            <input class="form-control" type="email" #emailRef/>
+            <input type="button" value="Delete By Id"
+            (click)="deleteEmployees(emailRef.value)" class="btn btn-primary">
+        </div>
+    </div>
 </div>
+

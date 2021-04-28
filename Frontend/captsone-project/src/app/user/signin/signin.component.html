@@ -1,11 +1,21 @@
 <div>
-    <h2>User Sign In</h2>
-    <form #userRef="ngForm" (ngSubmit)="signin(userRef.value)">
-        <label>User Id</label>
-        <input type="text" name="uid" ngModel><br/>
-        <label>Password</label>
-        <input type="text" name="pass" ngModel><br/>
-        <input type="submit" value="SignIn"/>
-        <input type="reset" value="reset"/>
-    </form>
+    <h2 style="text-align:center;">User Sign In</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3">
+                <form class="px-4 py-3" #userRef="ngForm" (ngSubmit)="signin(userRef.value)">
+                    <div class="mb-3">
+                        <label>User Name</label>
+                        <input class="form-control" placeholder="email@example.com" type="text" name="userName" ngModel required>
+                    </div>
+                    <div class="mb-3">
+                        <label>Password</label>
+                        <input class="form-control" placeholder="password" type="password" name="pass" ngModel required>
+                    </div>
+                    <input type="submit" value="SignIn" class="btn btn-link" [disabled]="userRef.invalid"/>
+                    <input type="reset" value="reset" class="btn btn-secondary"/>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

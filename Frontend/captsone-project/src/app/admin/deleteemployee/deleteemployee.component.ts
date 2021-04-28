@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
@@ -7,15 +9,33 @@ import { AdminService } from 'src/app/services/admin.service';
   styleUrls: ['./deleteemployee.component.css']
 })
 export class DeleteemployeeComponent implements OnInit {
-
-  constructor(public adminService:AdminService) { }
-  deleteMsg?:string
+  deleteData:any={};
+  constructor(
+    public adminService:AdminService,
+    public toastr:ToastrService,
+    public router:Router
+  ) { }
   ngOnInit(): void {
   }
-  deleteEmployees(id:any){
-    console.log("id is "+id);
-     this.adminService.deleteEmployee(id).subscribe((result:string)=> {
-         this.deleteMsg=result;
-     })
-   }
+
+  deleteEmployees(email:any){
+    if(email===""){
+      this.toastr.error("Please fill up the required fields", 'Error', {
+        timeOut: 2000,
+      });
+    }else{
+      this.adminService.deleteEmployee(email).subscribe(result=>{
+        console.log(result)
+        if(this.deleteData.success){
+          this.toastr.success(this.deleteData.msg, 'Success', {
+            timeOut: 2000,
+          });
+        }else{
+          this.toastr.error(this.deleteData.msg, 'Error', {
+            timeOut: 2000,
+          });  
+        }
+      })
+    }
+  }
 }

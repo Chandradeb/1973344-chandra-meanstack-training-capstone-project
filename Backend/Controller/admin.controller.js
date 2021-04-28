@@ -64,36 +64,36 @@ exports.admin_viewRequests = function(req, res) {
 }
 
 exports.Signup = (req,res)=> {
-   
-    let employee = new EmployeeModel({
-        _id:req.body.eid,
-        fname:req.body.fname,
-        lname:req.body.lname,
-        email:req.body.emailid,
-        password:req.body.pass
-        
-    });
-    
-    employee.save((err,result)=> {
-        if(!err){
-            res.send("Record stored successfully ")
-            //res.json({"msg":"Record stored successfully"})
-        }else {
-            res.send("Record didn't store ");
+    let eemail = req.body.emailid;
+    EmployeeModel.findOne({email:eemail}, (err,result)=>{
+        if(err)throw err;
+        if(result){
+            return res.json({success:false, msg:"Email already exist"})
+        }else{
+            let employee = new EmployeeModel({
+                fname:req.body.fname,
+                lname:req.body.lname,
+                email:req.body.emailid,
+                password:req.body.pass   
+            })
+            employee.save((err,result)=> {
+                if(!err){
+                    return res.json({success:true, msg:"Employee registered"});
+                }else {
+                    return res.json({success:false, msg:"Something went wrong"});
+                }
+            })
         }
     })
 
 }
 
 exports.deleteEmployee = (req,res)=>{
-    let eid = req.params.id;
-    console.log(eid)
-    EmployeeModel.deleteOne({_id:eid},(err,result)=> {
+    let eemail = req.params.email;
+    EmployeeModel.deleteOne({email:eemail},(err,result)=> {
         if(!err){
                 if(result.deletedCount>0){
-                
                     res.send("Record deleted successfully") 
-                    console.log(result)
                 }
                 else {
                     res.send("Record not present");

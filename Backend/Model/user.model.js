@@ -3,12 +3,13 @@ mongoose.Promise = global.Promise;
 const Schema = mongoose.Schema;      // creating reference. 
 
 let UserSchema = new Schema({
-    _id:Number,
     fname:String,
     lname:String,
+    userName:String,
+    ticket:Boolean,
     dob:Date,
     fund:Number,
-    address:String,
+    addr:String,
     emailid:String,
     password:String
 })

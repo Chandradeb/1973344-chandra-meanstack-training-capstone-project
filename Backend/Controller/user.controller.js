@@ -2,57 +2,60 @@ var  UserModel = require('../Model/user.model.js');
 
 
 let signup =(req,res)=>{
-    let user = new UserModel({
-    _id:req.body.uid,
-    fname:req.body.fname,
-    lname:req.body.lname,
-    dob:req.body.dob,
-    address:req.body.address,
-    emailid:req.body.emailid,
-    password:req.body.pass
-    })
-  
-
-    user.save((err,result)=>{
-        if(!err){
-            res.send("Record stored successfully ")
-            //res.json({"msg":"Record stored successfully"})
-        }else {
-            res.send("Record didn't store ");
+    let ename = req.body.userName;
+    UserModel.findOne({userName:ename}, (err,result)=>{
+        if(err)throw err;
+        if(result){
+            return res.json({success:false, msg:"User name already exist"})
+        }else{
+            let user = new UserModel({
+                fname:req.body.fname,
+                lname:req.body.lname,
+                dob:req.body.dob,
+                fund:20000,
+                address:req.body.address,
+                emailid:req.body.emailid,
+                password:req.body.pass,
+                userName:req.body.userName,
+                ticket:false
+            })
+            user.save((err,result)=>{
+                if(!err){
+                    return res.json({success:true, msg:"You have signed up successfully"});
+                }else {
+                    return res.json({success:false, msg:"Something went wrong"});
+                }
+            })
         }
     })
 }
 
-//exports.signin =(req,res)=>{
-//}
-
 let signin = (req,res) => {
-let uid = req.body.uid
-let pass = req.body.pass
-
-UserModel.findOne({_id:uid}, (err,result)=>{
-    if(err)throw err;
-    if(!result){
-        return res.json({success:false, msg:"Incorrect id"})
-    }else{
-        if(result.password == pass){
-            res.json({
-                success:true,
-                user: {
-                    _id:result._id,
-                    email:result.email,
-                    fname:result.fname,
-                    lname:result.lname,
-                    dob:result.dob,
-                    address:result.address,
-                    fund:result.fund
-                }
-            })
-        }else {
-            return res.json({success:false, msg:"Incorrect password"})
+    let ename = req.body.userName;
+    let pass = req.body.pass;
+    UserModel.findOne({userName:ename}, (err,result)=>{
+        if(err)throw err;
+        if(!result){
+            return res.json({success:false, msg:"Incorrect user name"})
+        }else{
+            if(result.password == pass){
+                res.json({
+                    success:true,
+                    user: {
+                        email:result.email,
+                        fname:result.fname,
+                        lname:result.lname,
+                        userName:result.userName,
+                        dob:result.dob,
+                        address:result.address,
+                        fund:result.fund
+                    }
+                })
+            }else {
+                return res.json({success:false, msg:"Incorrect password"})
+            }
         }
-    }
-})
+    })
 }
 
 module.exports={signin,signup}
