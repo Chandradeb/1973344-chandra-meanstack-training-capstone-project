@@ -27,6 +27,9 @@ import { GeneratereportsComponent } from './admin/generatereports/generatereport
 import { ViewTicketComponent } from './employee/view-ticket/view-ticket.component';
 import { ViewOrderStatusComponent } from './employee/view-order-status/view-order-status.component';
 import { RefundComponent } from './employee/refund/refund.component';
+import { DisplayItemsComponent } from './user/display-items/display-items.component';
+import { ShoppingCartComponent } from './user/shopping-cart/shopping-cart.component';
+import { OrderPlacedComponent } from './user/order-placed/order-placed.component';
 
 const routes: Routes = [
   { path: "main-page", component: MainPageComponent, canActivate: [EmployeeAuth2Guard, UserAuth2Guard]},
@@ -51,6 +54,9 @@ const routes: Routes = [
   { path: "view-ticket", component:ViewTicketComponent},
   { path: "view-order", component: ViewOrderStatusComponent},
   { path:"Refund",component:RefundComponent },
+  { path:"displayItems", component: DisplayItemsComponent},
+  { path:"shoppingCart", component:ShoppingCartComponent},
+  { path:"orderPlaced", component:OrderPlacedComponent},
   { path: "", redirectTo: "\main-page", pathMatch: "full" }
 ];
 

@@ -5,8 +5,7 @@ import { HttpClient } from '@angular/common/http'
 })
 
 export class UserService{
-    usrName:string= "";
-
+    
     constructor(private http: HttpClient) { }
     signup(userRef:any){
         return this.http.post("http://localhost:9090/user/signup",userRef);

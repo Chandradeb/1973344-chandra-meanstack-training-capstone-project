@@ -34,6 +34,9 @@ import { ViewOrderStatusComponent } from './employee/view-order-status/view-orde
 import { RefundComponent } from './employee/refund/refund.component';
 import { ViewTicketComponent } from './employee/view-ticket/view-ticket.component';
 import { UnlockUserComponent } from './employee/unlock-user/unlock-user.component';
+import { DisplayItemsComponent } from './user/display-items/display-items.component';
+import { OrderPlacedComponent } from './user/order-placed/order-placed.component';
+import { ShoppingCartComponent } from './user/shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +67,10 @@ import { UnlockUserComponent } from './employee/unlock-user/unlock-user.componen
     ViewOrderStatusComponent,
     RefundComponent,
     ViewTicketComponent,
-    UnlockUserComponent
+    UnlockUserComponent,
+    DisplayItemsComponent,
+    OrderPlacedComponent,
+    ShoppingCartComponent
 
   ],
   imports: [

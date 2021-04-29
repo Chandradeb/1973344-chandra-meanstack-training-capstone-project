@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-userdashboard',
@@ -7,14 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./userdashboard.component.css']
 })
 export class UserdashboardComponent implements OnInit {
-
-  constructor(public router: Router) { }
+  userDetails:any={}
+  constructor(public router: Router, public userService: UserService) { }
 
   ngOnInit(): void {
+    this.userDetails=JSON.parse(sessionStorage.getItem("userDetails") || "{}")
+    //Update username in user.service
+    this.userService.usrName=this.userDetails.userName;
   }
 
   StartShopping(){
-
+    this.router.navigate(['displayItems'])
   }
 
   OrderStatus(){
