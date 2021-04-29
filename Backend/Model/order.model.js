@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 let orderSchema = new Schema({
     _id:Number,
-    orderItems:Array(),
+    itemsNames:Array(),
     userName:String,
     status:String,
     total:Number,

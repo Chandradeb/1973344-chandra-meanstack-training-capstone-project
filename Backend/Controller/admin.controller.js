@@ -2,6 +2,7 @@ const { isValidObjectId } = require('mongoose');
 var adminModel = require('../Model/admin.model.js');
 var EmployeeModel = require('../Model/employee.model.js');
 const OrderModel = require('../Model/order.model.js');
+const ProductModel = require('../Model/product.model.js');
 var UserModel = require('../Model/user.model.js')
 
 
@@ -155,7 +156,7 @@ exports.weeklyReports = (req, res) => {
 }
 
 exports.productReports = (req,res)=>{
-    Prod.find({},(err,result)=>{
+    ProductModel.find({},(err,result)=>{
         if(!err){
             
             res.json(result);

@@ -66,7 +66,7 @@ import { GeneratereportsComponent } from './admin/generatereports/generatereport
         closeButton: true,  
           
       } 
-    ), // ToastrModule added
+    ), 
 
   ],
   providers: [],
