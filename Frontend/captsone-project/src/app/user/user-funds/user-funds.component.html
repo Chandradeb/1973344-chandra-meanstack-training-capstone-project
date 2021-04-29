@@ -2,7 +2,7 @@
     <div class="card">
         <h5 class="card-header">Funds in your account</h5>
         <div class="card-body">
-            <p class="card-text">{{usersArr[0].fund}}</p>
+            <p class="card-text">{{userDetails.fund}}</p>
             <button type="button" *ngIf="!fundFlag" class="btn btn-info" (click) = "fundEdit()">
                 <img src="../assets/edit_icon.jpg" width="20" height="20" alt=""> Edit
             </button>

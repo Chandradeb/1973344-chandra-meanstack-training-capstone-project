@@ -14,7 +14,7 @@ export class UserFundsComponent implements OnInit {
   userDetails:any={};
   user:any={};
   fundFlag = false;
-  usersArr:Array<User>= new Array(); 
+  usersArr:Array<User>= new Array();
 
   changefundRef = new FormGroup({
     accNum:new FormControl(),
