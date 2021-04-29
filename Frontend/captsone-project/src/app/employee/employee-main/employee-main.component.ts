@@ -26,6 +26,10 @@ export class EmployeeMainComponent implements OnInit {
     
   }
 
+  back(){
+    this.router.navigate(["main-page"]);
+  }
+
   checkEmployee():void{
     const employee={
       email:this.signInRef.value.email,
