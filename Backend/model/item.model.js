@@ -1,14 +1,13 @@
 let mongoose= require("mongoose");
 mongoose.Promise= global.Promise;
 
-let itemSchema= mongoose.Schema({
-    _id:Number,
+let ItemSchema= mongoose.Schema({
     itemName:String,
     price:Number,
     quantity:Number,
-    img:String
+    maxQuant:Number
 });
 
-let ItemModel= mongoose.model("itemsTable",itemSchema);
+let ItemModel= mongoose.model("",ItemSchema, "itemsTable");
 
 module.exports= ItemModel;

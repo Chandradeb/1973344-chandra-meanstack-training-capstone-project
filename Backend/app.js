@@ -6,7 +6,7 @@ let cors= require('cors');
 
 
 //Database URL Details
-let url= "mongodb://localhost:27017/meanStack";
+let url= "mongodb://localhost:27017/capstone";
 
 //middleware enable data from post method
 //middleware: between client and server
@@ -25,7 +25,7 @@ mongoose.connect(url, mongooseDbOption);
 mongoose.connection
 
 //link to router module
-var User= require("./router/user.router.js");
+var User= require("./Router/user.router.js");
 
 //Middelware
 app.use("/user", User);

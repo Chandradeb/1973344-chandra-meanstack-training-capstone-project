@@ -7,6 +7,12 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { EmployeeMainComponent } from './employee/employee-main/employee-main.component';
 import { AdminMainComponent } from './admin/admin-main/admin-main.component';
 import { UserMainComponent } from './user/user-main/user-main.component';
+import { DisplayItemsComponent } from './user/user-main/display-items/display-items.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { ShoppingCartComponent } from './user/user-main/shopping-cart/shopping-cart.component';
+import { OrderPlacedComponent } from './user/user-main/order-placed/order-placed.component';
+
 
 @NgModule({
   declarations: [
@@ -14,12 +20,17 @@ import { UserMainComponent } from './user/user-main/user-main.component';
     MainPageComponent,
     EmployeeMainComponent,
     AdminMainComponent,
-    UserMainComponent
+    UserMainComponent,
+    DisplayItemsComponent,
+    ShoppingCartComponent,
+    OrderPlacedComponent
 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
