@@ -1,0 +1,44 @@
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3">
+                <h2>Update a Product</h2>
+                <form [formGroup]="updateProductForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label for="productname">Name</label>
+                        <input type="text" formControlName="productname" placeholder="Product Name" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.productname.errors }" />
+                        <div *ngIf="submitted && f.productname.errors" class="invalid-feedback">
+                            <div *ngIf="f.productname.errors.required">Product Id is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="productprice">Price</label>
+                        <input step="0.01" type="number" formControlName="productprice" placeholder="Product Price"
+                            class="form-control" [ngClass]="{ 'is-invalid': submitted && f.productprice.errors }" />
+                        <div *ngIf="submitted && f.productprice.errors" class="invalid-feedback">
+                            <div *ngIf="f.productprice.errors.required">Product price is required</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="productquantity">Quantity</label>
+                        <input type="number" formControlName="productquantity" placeholder="Product Quantity"
+                            class="form-control" [ngClass]="{ 'is-invalid': submitted && f.productquantity.errors }" />
+                        <div *ngIf="submitted && f.productquantity.errors" class="invalid-feedback">
+                            <div *ngIf="f.productquantity.errors.required">Product quantity is required</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button [disabled]="loading" class="btn btn-primary">
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                            Update
+                        </button>
+                        <button class="btn btn-danger" (click)="goToDashboard()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

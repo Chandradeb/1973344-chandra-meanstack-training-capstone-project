@@ -1,1 +1,37 @@
-<p>user-main works!</p>
+<div>
+    <h2 style="text-align:center;">User Page</h2>
+    <br/>
+
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row row-cols-2">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Sign Up</h5>
+                        <p class="card-text">
+                            Sign up page for the first time user
+                        </p>
+                        <button (click)="signup()" class="btn btn-info">Sign Up</button>
+                    </div>
+                </div>
+    
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Sign In</h5>
+                        <p class="card-text">Sign in page for existing user</p>
+                        <button (click)="signin()" class="btn btn-info">Sign In</button>
+                    </div>
+                </div>
+    
+    
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Raise Ticket</h5>
+                        <p class="card-text">Raise ticket if your account got locked</p>
+                        <button (click)="raiseticket()" class="btn btn-info">Raise Ticket</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

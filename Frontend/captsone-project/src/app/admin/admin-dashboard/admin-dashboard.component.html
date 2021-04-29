@@ -1,0 +1,71 @@
+<div class="jumbotron">
+    <div class="container">
+        <div *ngIf="!isIndividualOp" class="all-operations">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Add a product</h5>
+                    <p class="card-text">
+                        Add new products with an auto-generated product id.
+                    </p>
+                    <button (click)="addProduct()" class="btn btn-primary">Add</button>
+
+                </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Update a product</h5>
+                    <p class="card-text">Update the products price & quantities.</p>
+                    <button (click)="updateProduct()" class="btn btn-primary">Update</button>
+                </div>
+            </div>
+
+
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Delete a product</h5>
+                    <p class="card-text">Delete the products which has no demands.</p>
+                    <button (click)="deleteProduct()" class="btn btn-primary">Delete</button>
+                </div>
+            </div>
+
+
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">View Requests</h5>
+                    <p class="card-text">View requests from the employees such add/delete/update</p>
+                    <button (click)="viewRequests()" class="btn btn-primary">View</button>
+                </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Add Employee</h5>
+                    <p class="card-text">Add New Employee</p>
+                    <button (click)="addEmployee()" class="btn btn-primary">Add</button>
+                </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Delete Employee</h5>
+                    <p class="card-text">Delete Employee</p>
+                    <button (click)="deleteEmployee()" class="btn btn-primary">Delete</button>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+        <div *ngIf="isIndividualOp" class="ind-operation">
+            <app-add-product (dashboardChange)="cancelIndOp($event)" *ngIf="isAddProduct"></app-add-product>
+            <app-update-product (dashboardChange)="cancelIndOp($event)" *ngIf="isUpdateProduct"></app-update-product>
+            <app-delete-product (dashboardChange)="cancelIndOp($event)" *ngIf="isDeleteProduct"></app-delete-product>
+            <app-view-requests (dashboardChange)="cancelIndOp($event)" *ngIf="isViewRequests"></app-view-requests>
+        </div>
+    </div>
+
+
+</div>
