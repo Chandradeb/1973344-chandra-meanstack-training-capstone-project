@@ -29,6 +29,7 @@ import { SendRequestsComponent } from './employee/send-requests/send-requests.co
 import { UserOrderStatusComponent } from './user/user-order-status/user-order-status.component';
 import { EditProfileComponent } from './user/edit-profile/edit-profile.component';
 import { UserFundsComponent } from './user/user-funds/user-funds.component';
+import { RaiseTicketComponent } from './user/raise-ticket/raise-ticket.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { UserFundsComponent } from './user/user-funds/user-funds.component';
     SendRequestsComponent,
     UserOrderStatusComponent,
     EditProfileComponent,
-    UserFundsComponent
+    UserFundsComponent,
+    RaiseTicketComponent
 
   ],
   imports: [

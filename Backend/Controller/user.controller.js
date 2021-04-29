@@ -1,5 +1,6 @@
 var  UserModel = require('../Model/user.model.js');
-const OrderModel = require('../Model/order.model.js')
+const OrderModel = require('../Model/order.model.js');
+const TicketModel = require('../Model/ticket.model.js');
 
 let signup =(req,res)=>{
     let ename = req.body.userName;
@@ -40,23 +41,52 @@ let signin = (req,res) => {
         if(!result){
             return res.json({success:false, msg:"Incorrect user name"})
         }else{
-            if(result.password == pass){
-                res.json({
-                    success:true,
-                    user: {
-                        emailid:result.emailid,
-                        fname:result.fname,
-                        lname:result.lname,
-                        userName:result.userName,
-                        dob:result.dob,
-                        addr:result.addr,
-                        fund:result.fund,
-                        orders:result.itemsNames,
-                        phoneNum:result.phoneNum
+            if(!result.ticket){
+                if(result.password == pass){
+                    let eloginAttempt = 0;
+                    UserModel.updateOne({userName:ename}, {$set: {loginAttempt:eloginAttempt}}, (error,data)=>{
+                        console.log(error);
+                    })
+                    res.json({
+                        success:true,
+                        user: {
+                            emailid:result.emailid,
+                            fname:result.fname,
+                            lname:result.lname,
+                            userName:result.userName,
+                            dob:result.dob,
+                            addr:result.addr,
+                            fund:result.fund,
+                            orders:result.itemsNames,
+                            phoneNum:result.phoneNum
+                        }
+                    })
+                }else {
+                    let eloginAttempt = result.loginAttempt + 1;
+                    if(eloginAttempt >= 3){
+                        let eticket = true;
+                        eloginAttempt = 0;
+                        UserModel.updateOne({userName:ename}, {$set: {ticket:eticket, loginAttempt:eloginAttempt}}, (err1,result1)=>{
+                            if(err)throw err;
+                            if(result1.nModified==0){
+                                return res.json({success:false, msg:"Something went wrong"})
+                            }else{
+                                return res.json({success:false, msg:"Your account has been locked due to too many failed attempts"})
+                            }
+                        })
+                    }else{
+                        UserModel.updateOne({userName:ename}, {$set: {loginAttempt:eloginAttempt}}, (err2,result2)=>{
+                            if(err)throw err;
+                            if(result2.nModified==0){
+                                return res.json({success:false, msg:"Something went wrong"})
+                            }else{
+                                return res.json({success:false, msg:"Incorrect password"})
+                            }
+                        })
                     }
-                })
-            }else {
-                return res.json({success:false, msg:"Incorrect password"})
+                }
+            }else{
+                return res.json({success:false, msg:"Your account has been locked due to too many failed attempts"})
             }
         }
     })
@@ -189,4 +219,30 @@ let updatefund = (req, res)=>{
     })
 }
 
-module.exports={signin,signup, getOrderStatus, updatefname, updatelname, updateemail, updatephoneNum, updateaddr, updatedob, updatefund}
+let raiseTicket = (req, res)=>{
+    let usrName=req.body.userName;
+    console.log(usrName)
+    UserModel.find({userName:usrName}, (err,result)=>{
+        if(err)throw err;
+        if(result.length==0){
+            return res.json({success:false, msg:"Can't find the user"})
+        }else{
+            let ticket = new TicketModel({
+                userName:req.body.userName,
+                msg:req.body.msg
+            })
+            console.log(ticket)
+        
+            ticket.save((error,data)=>{
+                if(!error){
+                    return res.json({success:true, msg:"Ticket sent"});
+                }else {
+                    return res.json({success:false, msg:"Something went wrong"});
+                }
+            })
+        }
+    })
+}
+
+module.exports={signin,signup, getOrderStatus, updatefname, updatelname, updateemail, 
+    updatephoneNum, updateaddr, updatedob, updatefund, raiseTicket}

@@ -12,5 +12,6 @@ router.post('/updatephoneNum/:userName', UserController.updatephoneNum)
 router.post('/updateaddr/:userName', UserController.updateaddr)
 router.post('/updatedob/:userName', UserController.updatedob)
 router.post('/updatefund/:userName', UserController.updatefund)
+router.post('/raiseTicket', UserController.raiseTicket)
 
 module.exports = router;

@@ -48,4 +48,8 @@ export class UserService{
         return this.http.post("http://localhost:9090/user/updatefund/"+userName, changeRef);
     }
 
+    raiseTicket(ticketRef:any){
+        return this.http.post("http://localhost:9090/user/raiseTicket", ticketRef);
+    }
+
 }
