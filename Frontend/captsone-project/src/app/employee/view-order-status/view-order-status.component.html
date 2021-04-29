@@ -1,0 +1,24 @@
+<div >
+    <table  class="table">
+        <thead class="table-dark">
+
+            <tr>
+                <th scope="col">Order ID</th>
+                <th scope="col">User Name</th>
+                <th scope="col">status</th>
+                <th scope="col">Total</th>
+            </tr>
+            <tr *ngFor="let pp of orders">
+                <td>{{pp._id}}</td>
+                <td>{{pp.userName}}</td>
+                <td>{{pp.status}}</td>
+                <td>{{pp.total}}</td>
+            </tr>
+        </thead>    
+    </table>
+    
+</div>
+<div class="ref">
+<input type="submit" class="btn btn-dark" value="Refresh" (click)="refreshpage()"/>
+</div>
+<br/>

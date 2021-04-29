@@ -56,6 +56,10 @@ export class AdminDashboardComponent implements OnInit {
     this.router.navigate(["/deleteemployee"])
   }
 
+  generateReports(){
+    this.router.navigate(["/generatereports"])
+  }
+
   deactivateAllOps() {
     this.isIndividualOp = true;
     this.isAddProduct = false;

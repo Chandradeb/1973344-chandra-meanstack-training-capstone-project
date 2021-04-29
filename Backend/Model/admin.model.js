@@ -44,7 +44,7 @@ admin.addProduct = function addProduct(body, res) {
 
     let mongoClient = require("mongodb").MongoClient;
     let url = "mongodb://localhost:27017"
-    var productObj = { name: name, price: price, quantity: quantity };
+    var productObj = { name: name, price: price, quantity:0, maxQuant: quantity };
     let nameObj = { name: body.name };
     mongoClient.connect(url, mongooseDbOption, (err1, client) => {
         if (!err1) {
@@ -82,7 +82,7 @@ admin.updateProduct = function updateProduct(body, res) {
         if (!err1) {
             let db = client.db("grocery_store");
             var myquery = { name: name };
-            var newvalues = { $set: { price: price, quantity: quantity } };
+            var newvalues = { $set: { price: price, maxQuant: quantity } };
             db.collection("Products").find({ name: name }).toArray(function (err, result) {
                 if (err) {
                     res(null, { message: 'Error', text: 'Error' })

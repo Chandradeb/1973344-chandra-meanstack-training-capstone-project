@@ -21,4 +21,7 @@ export class UserMainComponent implements OnInit {
   raiseticket(){
     this.router.navigate(["raise-ticket"]);
   }
+  back(){
+    this.router.navigate(["main-page"]);
+  }
 }

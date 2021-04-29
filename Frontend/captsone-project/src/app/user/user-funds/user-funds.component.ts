@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services/user.service';
+import { User } from '../model.user';
 
 @Component({
   selector: 'app-user-funds',
@@ -10,8 +11,10 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UserFundsComponent implements OnInit {
   changedData:any={};
-  userDetails:any={}
+  userDetails:any={};
+  user:any={};
   fundFlag = false;
+  usersArr:Array<User>= new Array(); 
 
   changefundRef = new FormGroup({
     accNum:new FormControl(),
@@ -28,7 +31,12 @@ export class UserFundsComponent implements OnInit {
   }
 
   showFunds(){
-    this.userDetails=JSON.parse(sessionStorage.getItem("userDetails") || "{}")
+    this.user=JSON.parse(sessionStorage.getItem("userDetails") || "{}")
+    this.userService.retrieveUser(this.user.userName).subscribe(result=>{
+      this.usersArr=result;
+      console.log(this.usersArr[0])
+      this.userDetails = this.usersArr[0]
+    });
   }
 
   fundEdit(){

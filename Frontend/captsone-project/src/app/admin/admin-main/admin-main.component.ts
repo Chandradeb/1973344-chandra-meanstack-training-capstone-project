@@ -36,6 +36,10 @@ export class AdminMainComponent implements OnInit {
       password: ['', Validators.required]
     });
   }
+
+  back(){
+    this.router.navigate(["main-page"]);
+  }
   
   get f() { return this.loginForm.controls; }
 

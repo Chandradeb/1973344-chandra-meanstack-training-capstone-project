@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
   selector: 'app-employee-profile',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeeProfileComponent implements OnInit {
 
-  constructor() { }
+  updateMsg?:String;
+  constructor(public emplService:EmployeeService) { }
 
   ngOnInit(): void {
+  }
+  updatePwd(productRef:any){
+    console.log(productRef);
+    this.emplService.updatePwd(productRef).subscribe((result:String)=>{
+    this.updateMsg=result;
+    });
   }
 
 }

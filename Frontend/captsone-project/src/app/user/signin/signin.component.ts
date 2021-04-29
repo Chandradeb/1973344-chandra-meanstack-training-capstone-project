@@ -30,9 +30,6 @@ export class SigninComponent implements OnInit {
         });
       //token for user login
       sessionStorage.setItem('userSignedIn', 'true');
-      
-      //Update username in user.service
-      this.userService.usrName=this.signInData.user.userName;
 
       //user information for using to edit profile
       sessionStorage.setItem('userDetails',JSON.stringify(this.signInData.user))

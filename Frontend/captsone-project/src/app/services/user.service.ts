@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
+import { User } from '../user/model.user';
+import { Observable } from 'rxjs';
+
 @Injectable({
     providedIn: 'root'
 })
 
 export class UserService{
-    usrName:string= "";
-
+    ipAddress:string= "http://localhost:9090";
     constructor(private http: HttpClient) { }
     signup(userRef:any){
         return this.http.post("http://localhost:9090/user/signup",userRef);
@@ -50,6 +52,10 @@ export class UserService{
 
     raiseTicket(ticketRef:any){
         return this.http.post("http://localhost:9090/user/raiseTicket", ticketRef);
+    }
+
+    retrieveUser(usrName:any):Observable<User[]>{
+        return this.http.get<User[]>(this.ipAddress+"/user/retrieveUser/"+usrName);
     }
 
 }
