@@ -9,5 +9,10 @@ router.delete('/deleteProduct/:productName', admin_controller.admin_deleteProduc
 router.get('/viewRequests', admin_controller.admin_viewRequests);
 router.post('/Signup',admin_controller.Signup);
 router.delete('/deleteEmployee/:id',admin_controller.deleteEmployee);
+router.get('/costumerDetails', admin_controller.costumerDetails)
+router.get('/dailyReports', admin_controller.dailyReports);
+router.get('/weeklyReports',admin_controller.weeklyReports);
+router.get('/monthlyReports',admin_controller.monthlyReports)
+router.get('/productDetails',admin_controller.productReports)
 
 module.exports = router;

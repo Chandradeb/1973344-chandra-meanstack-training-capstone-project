@@ -1,7 +1,8 @@
 const { isValidObjectId } = require('mongoose');
 var adminModel = require('../Model/admin.model.js');
 var EmployeeModel = require('../Model/employee.model.js');
-
+const OrderModel = require('../Model/order.model.js');
+var UserModel = require('../Model/user.model.js')
 
 
 exports.admin_login = function(req, res) {
@@ -101,3 +102,65 @@ exports.deleteEmployee = (req,res)=>{
             }
     })
 }
+
+exports.costumerDetails = (req,res)=>{
+    
+    UserModel.find({},(err,result)=> {
+       
+        if(!err){
+            
+            res.json(result);
+            console.log(result)
+        }
+    })
+    
+       
+
+}
+
+exports.dailyReports = (req,res)=>{
+   OrderModel.find({
+        date:{
+            $gte:new Date(new Date()-1*60*60*24*1000)
+        }
+    },(err,data)=>{
+      if (!err) {
+        res.json(data);
+      }
+    })
+}
+
+exports.monthlyReports = (req,res)=>{
+    OrderModel.find({
+        date:{
+            $gte:new Date(new Date()-30*60*60*24*1000)
+        }
+    },(err,data)=>{
+      if (!err) {
+        res.json(data);
+      }
+    })
+}
+
+exports.weeklyReports = (req, res) => {
+    OrderModel.find({
+      date: {
+        $gte: new Date(new Date() - 7 * 60 * 60 * 24 * 1000),
+      },
+    },(err,data)=>{
+      if (!err) {
+        res.json(data);
+      }
+    })
+}
+
+exports.productReports = (req,res)=>{
+    Prod.find({},(err,result)=>{
+        if(!err){
+            
+            res.json(result);
+            console.log(result)
+        }
+    })
+}
+

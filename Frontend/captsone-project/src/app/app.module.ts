@@ -26,6 +26,7 @@ import { EmployeeProfileComponent } from './employee/employee-profile/employee-p
 import { UnlockUsersComponent } from './employee/unlock-users/unlock-users.component';
 import { OrderStatusComponent } from './employee/order-status/order-status.component';
 import { SendRequestsComponent } from './employee/send-requests/send-requests.component';
+import { GeneratereportsComponent } from './admin/generatereports/generatereports.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { SendRequestsComponent } from './employee/send-requests/send-requests.co
     EmployeeProfileComponent,
     UnlockUsersComponent,
     OrderStatusComponent,
-    SendRequestsComponent
+    SendRequestsComponent,
+    GeneratereportsComponent
 
   ],
   imports: [

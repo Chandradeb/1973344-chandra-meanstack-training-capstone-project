@@ -18,6 +18,7 @@ import { EmployeeProfileComponent } from './employee/employee-profile/employee-p
 import { OrderStatusComponent } from './employee/order-status/order-status.component';
 import { SendRequestsComponent } from './employee/send-requests/send-requests.component';
 import { UnlockUsersComponent } from './employee/unlock-users/unlock-users.component';
+import { GeneratereportsComponent } from './admin/generatereports/generatereports.component';
 
 const routes: Routes = [
   { path: "main-page", component: MainPageComponent, canActivate: [EmployeeAuth2Guard]},
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: "order-status", component: OrderStatusComponent, canActivate: [EmployeeAuthGuard]},
   { path: "send-requests", component: SendRequestsComponent, canActivate: [EmployeeAuthGuard]},
   { path: "unlock-users", component: UnlockUsersComponent, canActivate: [EmployeeAuthGuard]},
+  { path: "generatereports", component:GeneratereportsComponent},
   { path: "", redirectTo: "\main-page", pathMatch: "full" }
 ];
 
