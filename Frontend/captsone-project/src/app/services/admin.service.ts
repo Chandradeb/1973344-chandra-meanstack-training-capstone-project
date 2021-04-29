@@ -35,32 +35,32 @@ export class AdminService {
   }
 
   Signup(employeeRef:any){
-    return this.http.post("http://localhost:9090/admin/Signup",employeeRef);
+    return this.http.post(this.API_URL+ "/admin/Signup",employeeRef);
 
   }
 
   deleteEmployee(email:any){
-    return this.http.delete("http://localhost:9090/admin/deleteEmployee/"+email,{responseType:'text'});
+    return this.http.delete(this.API_URL+ "/admin/deleteEmployee/"+email,{responseType:'text'});
   }
 
   dailyReports():Observable<Order>{
-    return this.http.get<Order>("http://localhost:9090/admin/dailyReports")
+    return this.http.get<Order>(this.API_URL+ "/admin/dailyReports")
   }
 
   weeklyReports():Observable<Order>{
-    return this.http.get<Order>("http://localhost:9090/admin/weeklyReports")
+    return this.http.get<Order>(this.API_URL+ "/admin/weeklyReports")
   }
 
   monthlyReports():Observable<Order>{
-    return this.http.get<Order>("http://localhost:9090/admin/monthlyReports")
+    return this.http.get<Order>(this.API_URL+ "/admin/monthlyReports")
   }
 
   productReports():Observable<Product>{
-    return this.http.get<Product>("http://localhost:9090/admin/productDetails")
+    return this.http.get<Product>(this.API_URL+ "/admin/productDetails")
   }
 
   costumerReports():Observable<User>{
-    return this.http.get<User>("http://localhost:9090/admin/costumerDetails")
+    return this.http.get<User>(this.API_URL+ "/admin/costumerDetails")
   }
  
 
