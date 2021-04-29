@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UnlockUsersComponent } from './unlock-users.component';
+import { ViewTicketComponent } from './view-ticket.component';
 
-describe('UnlockUsersComponent', () => {
-  let component: UnlockUsersComponent;
-  let fixture: ComponentFixture<UnlockUsersComponent>;
+describe('ViewTicketComponent', () => {
+  let component: ViewTicketComponent;
+  let fixture: ComponentFixture<ViewTicketComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UnlockUsersComponent ]
+      declarations: [ ViewTicketComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UnlockUsersComponent);
+    fixture = TestBed.createComponent(ViewTicketComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -23,8 +23,8 @@ export class AdminProductUpdateModel {
 }
 
 export class AdminViewRequestModel {
-    id!: string;
-    request!: string;
+    _id!: number;
+    prodreq!: string;
 }
 export class Employee {
     constructor(public _id:number,public fname:string,public lname:string,public emailid:string,public password:string){}

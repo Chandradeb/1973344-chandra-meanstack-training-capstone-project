@@ -17,7 +17,6 @@ import { EmployeeAuth2Guard } from './guards/employee-auth2.guard';
 import { EmployeeProfileComponent } from './employee/employee-profile/employee-profile.component';
 import { OrderStatusComponent } from './employee/order-status/order-status.component';
 import { SendRequestsComponent } from './employee/send-requests/send-requests.component';
-import { UnlockUsersComponent } from './employee/unlock-users/unlock-users.component';
 import { UserAuthGuard } from './guards/user-auth.guard';
 import { UserAuth2Guard } from './guards/user-auth2.guard';
 import { UserOrderStatusComponent } from './user/user-order-status/user-order-status.component';
@@ -25,6 +24,9 @@ import { EditProfileComponent } from './user/edit-profile/edit-profile.component
 import { UserFundsComponent } from './user/user-funds/user-funds.component';
 import { RaiseTicketComponent } from './user/raise-ticket/raise-ticket.component';
 import { GeneratereportsComponent } from './admin/generatereports/generatereports.component';
+import { ViewTicketComponent } from './employee/view-ticket/view-ticket.component';
+import { ViewOrderStatusComponent } from './employee/view-order-status/view-order-status.component';
+import { RefundComponent } from './employee/refund/refund.component';
 
 const routes: Routes = [
   { path: "main-page", component: MainPageComponent, canActivate: [EmployeeAuth2Guard, UserAuth2Guard]},
@@ -41,12 +43,14 @@ const routes: Routes = [
   { path: "employee-profile", component: EmployeeProfileComponent, canActivate: [EmployeeAuthGuard]},
   { path: "order-status", component: OrderStatusComponent, canActivate: [EmployeeAuthGuard]},
   { path: "send-requests", component: SendRequestsComponent, canActivate: [EmployeeAuthGuard]},
-  { path: "unlock-users", component: UnlockUsersComponent, canActivate: [EmployeeAuthGuard]},
   { path: "user-order-status", component: UserOrderStatusComponent},
   { path: "edit-profile", component: EditProfileComponent},
   { path: "user-funds", component: UserFundsComponent},
   { path: "raise-ticket", component: RaiseTicketComponent},
   { path: "generatereports", component:GeneratereportsComponent},
+  { path: "view-ticket", component:ViewTicketComponent},
+  { path: "view-order", component: ViewOrderStatusComponent},
+  { path:"Refund",component:RefundComponent },
   { path: "", redirectTo: "\main-page", pathMatch: "full" }
 ];
 

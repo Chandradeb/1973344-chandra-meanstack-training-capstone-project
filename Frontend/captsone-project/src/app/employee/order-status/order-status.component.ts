@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
   selector: 'app-order-status',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderStatusComponent implements OnInit {
 
-  constructor() { }
+  updateStat?:String;
+
+  constructor(public statusService:EmployeeService) { }
 
   ngOnInit(): void {
   }
-
+  updatestatus(productRef:any){
+    console.log(productRef);
+    this.statusService.updatestatus(productRef).subscribe((result:String)=>{
+      this.updateStat=result;
+    });
+  }
 }

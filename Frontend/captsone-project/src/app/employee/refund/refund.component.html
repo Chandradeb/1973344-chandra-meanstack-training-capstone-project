@@ -1,0 +1,13 @@
+
+<div>
+    <form #productRef="ngForm"(ngSubmit)="refund(productRef.value);productRef.resetForm()">
+        <label>User Name</label>
+        <input type="text" class="form-control" name="uid" ngModel><br/>
+        
+        <label>Refund Amount</label>
+        <input type="number" class="form-control" name="total" ngModel><br/>
+        <button type="submit" class="btn btn-primary mb-2">Refund</button>
+    </form>
+    {{RefundMsg}}
+</div>
+

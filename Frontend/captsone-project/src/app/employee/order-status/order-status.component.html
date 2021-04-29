@@ -1,1 +1,18 @@
-<p>order-status works!</p>
+
+
+<app-view-order-status></app-view-order-status><br/>
+<div>
+    <form #productRef="ngForm"(ngSubmit)="updatestatus(productRef.value); productRef.resetForm()">
+        <label>Order Id</label>
+        <input type="number" class="form-control " name="uid" ngModel><br/>
+        <br/>
+        <label>Updated Status</label>
+        <input type="text" class="form-control " name="status" ngModel><br/>
+        <input type="submit" class="btn btn-dark" value="update status"/>
+    </form>
+    {{updateStat}}
+    <br/>
+    <a routerLink="/Refund"><button class="btn btn-dark" style="color:blanchedalmond"> Refund</button></a>
+</div>
+<br/>
+

@@ -1,1 +1,11 @@
-<p>send-requests works!</p>
+<div >
+    <form #productRef='ngForm'(ngSubmit)="storerequest(productRef.value); productRef.resetForm()">
+        <label>requestId:</label>
+        <input type="text" class="form-control"name="pid" ngModel><br/>
+        <label>Product Request: </label>
+        <input type="text" class="form-control"name="prodreq" ngModel><br/>
+        <input type="submit" class="btn btn-secondary" value="store"/>
+        <input type="reset" class="btn btn-light" value="reset"/>
+    </form>
+    {{reqMsg}}
+</div>

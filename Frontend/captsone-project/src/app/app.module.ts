@@ -23,7 +23,6 @@ import { SignupComponent } from './user/signup/signup.component';
 import { UserdashboardComponent } from './user/userdashboard/userdashboard.component';
 import { EmployeeDashboardComponent } from './employee/employee-dashboard/employee-dashboard.component';
 import { EmployeeProfileComponent } from './employee/employee-profile/employee-profile.component';
-import { UnlockUsersComponent } from './employee/unlock-users/unlock-users.component';
 import { OrderStatusComponent } from './employee/order-status/order-status.component';
 import { SendRequestsComponent } from './employee/send-requests/send-requests.component';
 import { UserOrderStatusComponent } from './user/user-order-status/user-order-status.component';
@@ -31,6 +30,10 @@ import { EditProfileComponent } from './user/edit-profile/edit-profile.component
 import { UserFundsComponent } from './user/user-funds/user-funds.component';
 import { RaiseTicketComponent } from './user/raise-ticket/raise-ticket.component';
 import { GeneratereportsComponent } from './admin/generatereports/generatereports.component';
+import { ViewOrderStatusComponent } from './employee/view-order-status/view-order-status.component';
+import { RefundComponent } from './employee/refund/refund.component';
+import { ViewTicketComponent } from './employee/view-ticket/view-ticket.component';
+import { UnlockUserComponent } from './employee/unlock-user/unlock-user.component';
 
 @NgModule({
   declarations: [
@@ -51,14 +54,17 @@ import { GeneratereportsComponent } from './admin/generatereports/generatereport
     UserdashboardComponent,
     EmployeeDashboardComponent,
     EmployeeProfileComponent,
-    UnlockUsersComponent,
     OrderStatusComponent,
     SendRequestsComponent,
     UserOrderStatusComponent,
     EditProfileComponent,
     UserFundsComponent,
     RaiseTicketComponent,
-    GeneratereportsComponent
+    GeneratereportsComponent,
+    ViewOrderStatusComponent,
+    RefundComponent,
+    ViewTicketComponent,
+    UnlockUserComponent
 
   ],
   imports: [

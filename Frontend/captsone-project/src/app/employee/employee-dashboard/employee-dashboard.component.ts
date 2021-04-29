@@ -22,7 +22,7 @@ export class EmployeeDashboardComponent implements OnInit {
   }
 
   unlockUsers(){
-    this.router.navigate(['unlock-users']);
+    this.router.navigate(['view-ticket']);
   }
 
   editProfile(){
