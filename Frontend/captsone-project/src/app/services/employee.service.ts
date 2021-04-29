@@ -13,6 +13,7 @@ import {Ticket} from '../models/model.employee';
 })
 export class EmployeeService {
   private API_URL = environment.apiUrl;
+  ipAddress:string= environment.apiUrl;
   constructor(public http:HttpClient) { }
 
   signIn(employee:any){
@@ -22,31 +23,31 @@ export class EmployeeService {
   }
 
   storerequestDetails(productRef:any){
-    return this.http.post("http://localhost:9090/employee/Request",productRef,{responseType:'text'});
+    return this.http.post(this.ipAddress + "/employee/Request",productRef,{responseType:'text'});
   }
 
   updatePwd(productRef:any){
    
-    return this.http.put("http://localhost:9090/employee/Edit ",productRef,{responseType:'text'});
+    return this.http.put(this.ipAddress + "/employee/Edit ",productRef,{responseType:'text'});
 
   }
   updatestatus(productRef:any){
-    return this.http.put("http://localhost:9090/employee/Status ",productRef,{responseType:'text'});
+    return this.http.put(this.ipAddress + "/employee/Status ",productRef,{responseType:'text'});
   }
 
   ViewOrderStatus():Observable<Order[]>{
-    return this.http.get<Order[]>("http://localhost:9090/employee/Update")
+    return this.http.get<Order[]>(this.ipAddress + "/employee/Update")
   }
 
   ViewTicket():Observable<Ticket[]>{
-    return this.http.get<Ticket[]>("http://localhost:9090/employee/Ticket")
+    return this.http.get<Ticket[]>(this.ipAddress + "/employee/Ticket")
   }
 
   unlockUser(productRef:any){
-    return this.http.put("http://localhost:9090/employee/Unlock ",productRef,{responseType:'text'});
+    return this.http.put(this.ipAddress + "/employee/Unlock ",productRef,{responseType:'text'});
   }
   
   refund(productRef:any){
-    return this.http.put("http://localhost:9090/employee/Refund",productRef,{responseType:'text'});
+    return this.http.put(this.ipAddress + "/employee/Refund",productRef,{responseType:'text'});
   }
 }
