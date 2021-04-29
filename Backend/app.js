@@ -13,6 +13,32 @@ app.use(cors());   //enable cors policy
 
 let url= "mongodb://localhost:27017/grocery_store";
 
+let StartSchema =mongoose.Schema({
+   user:String,
+   password:String
+})
+
+let StartModel = mongoose.model("admin_login",StartSchema, "admin_login");
+
+let start = new StartModel({
+    user:"my_admin",
+   password:"CPFAc97gYPiF"
+})
+
+StartModel.findOne({user:"my_admin"}, (err,result)=>{
+   if(err) throw err;
+   if(result != null && result){
+      console.log("database already exists")
+   }else{
+      start.save((err,res)=>{
+         if(!err){
+            console.log("database created with admin login")
+         }
+      })
+   }
+})
+
+
 //Database connection without warning
 const mongooseDbOption = {       // to avoid warning
    useNewUrlParser: true,
@@ -22,7 +48,6 @@ const mongooseDbOption = {       // to avoid warning
 mongoose.connect(url, mongooseDbOption);
 //connect the database
 mongoose.connection;
-
 
 //link to router module
 var User = require("./Router/user.router.js");
