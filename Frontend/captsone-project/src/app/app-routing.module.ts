@@ -24,6 +24,7 @@ import { UserOrderStatusComponent } from './user/user-order-status/user-order-st
 import { EditProfileComponent } from './user/edit-profile/edit-profile.component';
 import { UserFundsComponent } from './user/user-funds/user-funds.component';
 import { RaiseTicketComponent } from './user/raise-ticket/raise-ticket.component';
+import { GeneratereportsComponent } from './admin/generatereports/generatereports.component';
 
 const routes: Routes = [
   { path: "main-page", component: MainPageComponent, canActivate: [EmployeeAuth2Guard, UserAuth2Guard]},
@@ -45,6 +46,7 @@ const routes: Routes = [
   { path: "edit-profile", component: EditProfileComponent},
   { path: "user-funds", component: UserFundsComponent},
   { path: "raise-ticket", component: RaiseTicketComponent},
+  { path: "generatereports", component:GeneratereportsComponent},
   { path: "", redirectTo: "\main-page", pathMatch: "full" }
 ];
 
