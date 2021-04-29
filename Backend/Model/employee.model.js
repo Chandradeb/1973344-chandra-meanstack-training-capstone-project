@@ -4,7 +4,6 @@ mongoose.Promise = global.Promise;
 //defining the schema
 let EmployeeSchema = mongoose.Schema({
     email:String,
-    pass:String,
     fname:String,
     lname:String,
     password:String
